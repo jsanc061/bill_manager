@@ -21,4 +21,5 @@ pipeline {
             echo 'Current status of the Pipeline has CHANGED.'
             echo 'Previous Pipeline failed, but is now successful.'
         }
+    }
 }
