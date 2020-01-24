@@ -7,4 +7,18 @@ pipeline {
             }
         }
     }
+    post{
+        success{
+            echo 'Build SUCCESS'
+        }
+        failure{
+            echo 'Build FAILURE'
+        }
+        unstable{
+            echo 'Build was marked as UNSTABLE.'
+        }
+        changed{
+            echo 'Current status of the Pipeline has CHANGED.'
+            echo 'Previous Pipeline failed, but is now successful.'
+        }
 }
