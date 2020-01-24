@@ -1,13 +1,22 @@
 pipeline {
     agent { docker { image 'maven:3.3.3' } }
     stages {
-        stage('build') {
+        tage('Build') {
             steps {
-                sh 'mvn --version'
+                sh './gradlew build'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './gradlew check'
             }
         }
     }
     post{
+        always {
+            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+            junit 'build/reports/**/*.xml'
+        }
         success{
             echo 'Build SUCCESS'
         }
