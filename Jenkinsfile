@@ -6,6 +6,11 @@ pipeline {
                 sh 'mvn --version'
             }
         }
+        stage('Test'){
+            steps{
+                sh 'java --version'
+            }
+        }
     }
     post{
         success{
